@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://b5s06mt88godg"]
+[gd_scene load_steps=2 format=3 uid="uid://yn6xpohk2m2e"]
+
+[ext_resource type="Texture2D" uid="uid://cqhwverf4785a" path="res://Assets/Sprite-0001.png" id="1_e36im"]
 
 [node name="xavierisawizardisland595" type="Node2D"]
+
+[node name="Sprite-0001" type="Sprite2D" parent="."]
+position = Vector2(797, 1014.5)
+scale = Vector2(6.125, 4.6875)
+texture = ExtResource("1_e36im")
