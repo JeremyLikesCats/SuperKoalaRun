@@ -1,15 +1,15 @@
 extends CharacterBody2D
 
 const MASS = 10
-const GRAVITY = 98
+const GRAVITY = 75
 const FRICTION = 100 * MASS
 const WEIGHT = MASS * GRAVITY
-const MAX_SPEED = 5500
-const MAX_JUMP_HEIGHT = 23
-const MOVE_THRUST = 4000 * MASS
+const MAX_SPEED = 6000
+const MAX_JUMP_HEIGHT = 25
+const MOVE_THRUST = 1500 * MASS
 const JUMP_SPEED = 13 * MASS
 const HOLD_JUMP_SPEED = 16 * MASS
-const JUMP_ACCELERATION_FACTOR = 0.03 # How much your move thrust is affected when jumping
+const JUMP_ACCELERATION_FACTOR = 0.05 # How much your move thrust is affected when jumping
 
 var jumping = false
 var jump_height = 0
@@ -30,6 +30,7 @@ func jump_calculations(delta: float) -> void:
 func move(delta: float) -> void:
 	if is_on_floor():
 		if Input.is_action_pressed("Left") or Input.is_action_pressed("Right"):
+			rotation += 0.1 * Input.get_axis("Left", "Right")
 			velocity.x = move_toward(velocity.x, Input.get_axis("Left", "Right") * MAX_SPEED * delta, MOVE_THRUST * delta)
 		velocity.y = 0
 		if Input.is_action_just_pressed("Jump"):
@@ -38,6 +39,7 @@ func move(delta: float) -> void:
 		
 	else:
 		if Input.is_action_pressed("Left") or Input.is_action_pressed("Right"):
+			rotation += 0.08 * Input.get_axis("Left", "Right")
 			velocity.x = move_toward(velocity.x, Input.get_axis("Left", "Right") * MAX_SPEED * delta, MOVE_THRUST * delta * JUMP_ACCELERATION_FACTOR)
 		if Input.is_action_pressed("Jump") and jumping:
 			print("hi")
