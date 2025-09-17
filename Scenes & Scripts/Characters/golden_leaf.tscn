@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ekfj0nlshs14"]
+
+[ext_resource type="Script" uid="uid://d33dq8lffvkem" path="res://golden_leaf.gd" id="1_qhyx7"]
+[ext_resource type="Texture2D" uid="uid://bfe228fhcpmxb" path="res://Assets/Sprite-0004.png" id="2_la4u4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f43xc"]
+size = Vector2(15, 15)
+
+[node name="Golden Leaf" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_qhyx7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_f43xc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_la4u4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
