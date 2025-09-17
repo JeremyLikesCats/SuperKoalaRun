@@ -32,7 +32,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
@@ -48,4 +48,4 @@ position_smoothing_enabled = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_e1o1q")
 autoplay = "default"
-frame_progress = 0.243681
+frame_progress = 0.30715
