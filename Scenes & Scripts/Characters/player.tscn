@@ -31,21 +31,23 @@ animations = [{
 "texture": SubResource("AtlasTexture_6laoa")
 }],
 "loop": true,
-"name": &"default",
+"name": &"koala idle",
 "speed": 6.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 3
 script = ExtResource("1_eiqjv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_eiqjv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3.173, 3.173)
+zoom = Vector2(5, 5)
 position_smoothing_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_e1o1q")
-autoplay = "default"
-frame_progress = 0.30715
+animation = &"koala idle"
+autoplay = "koala idle"
+frame_progress = 0.39952
