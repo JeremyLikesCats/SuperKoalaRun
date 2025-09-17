@@ -1,14 +1,23 @@
 extends Area2D
 
 @onready var timer: Timer = $Timer
-
+@onready var player: CharacterBody2D = %Player
+var knockback_direction = 1
 
 func _on_body_entered(body: Node2D) -> void:
-	print("You have died")
-	timer.start()
-	body.queue_free()
-
-
-func _on_timer_timeout() -> void:
-	get_tree().reload_current_scene()
-	
+	if timer.is_stopped() and body.is_in_group("Player"):
+		# When attacked
+		
+		# Deduct health
+		if PlayerGlobals.health > 1:
+			PlayerGlobals.health -= 1
+		else:
+			print("You died")
+			PlayerGlobals.health = PlayerGlobals.MAX_HEALTH
+			get_tree().reload_current_scene()
+		print(knockback_direction)
+		# Knockback
+		body.knockback(150 * knockback_direction, -100)
+		
+		# Start invincibility timer
+		timer.start()
