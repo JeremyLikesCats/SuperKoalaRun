@@ -22,7 +22,6 @@ func _process(delta: float) -> void:
 
 func jump_calculations(delta: float) -> void:
 	jump_height += -velocity.y * delta
-	print(jump_height)
 	if jump_height > MAX_JUMP_HEIGHT or is_on_floor() and velocity.y == 0:
 		jumping = false
 		jump_height = 0
@@ -58,7 +57,3 @@ func apply_physics(delta: float) -> void:
 	else:
 		# weight
 		velocity.y += WEIGHT * delta
-	
-	
-	pass
-	
