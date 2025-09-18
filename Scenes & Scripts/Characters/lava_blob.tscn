@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://batssswxc7724"]
+
+[ext_resource type="PackedScene" uid="uid://cigk5wr4e4tsb" path="res://Scenes & Scripts/Characters/killzone.tscn" id="1_v64k4"]
+[ext_resource type="Texture2D" uid="uid://d4hjawlslqdee" path="res://Assets/LavaBlob.png" id="2_ku4ks"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nj75n"]
+size = Vector2(16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvhju"]
+atlas = ExtResource("2_ku4ks")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxjer"]
+atlas = ExtResource("2_ku4ks")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4l0xx"]
+atlas = ExtResource("2_ku4ks")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wvc6"]
+atlas = ExtResource("2_ku4ks")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0tyfn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvhju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxjer")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4l0xx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wvc6")
+}],
+"loop": true,
+"name": &"lava chicken",
+"speed": 3.0
+}]
+
+[node name="lava_blob" type="Node2D"]
+
+[node name="Killzone" parent="." instance=ExtResource("1_v64k4")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_nj75n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0tyfn")
+animation = &"lava chicken"
+autoplay = "lava chicken"
+frame_progress = 0.889461

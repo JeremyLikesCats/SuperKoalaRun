@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://bxmd12kt3e84p" path="res://Scenes & Scripts/Characters/player.gd" id="1_eiqjv"]
 [ext_resource type="Texture2D" uid="uid://ct2lr27n1mj8p" path="res://Assets/Koala_Idle-Sheet.png" id="2_eiqjv"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_eiqjv"]
-radius = 8.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eiqjv"]
+size = Vector2(15, 15.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r00r3"]
 atlas = ExtResource("2_eiqjv")
@@ -40,7 +40,8 @@ collision_layer = 3
 script = ExtResource("1_eiqjv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_eiqjv")
+position = Vector2(-0.5, -0.25)
+shape = SubResource("RectangleShape2D_eiqjv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)

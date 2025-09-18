@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://wnhyue7ka2ja"]
+[gd_scene load_steps=10 format=3 uid="uid://wnhyue7ka2ja"]
 
-[ext_resource type="Script" uid="uid://d2v6inm4kgb3a" path="res://Scenes & Scripts/Characters/snake.gd" id="1_fqbi2"]
 [ext_resource type="Texture2D" uid="uid://80dn2pexkiwe" path="res://Assets/GrasslandTileMap.png" id="1_s6k22"]
 [ext_resource type="PackedScene" uid="uid://b8qirrg0fdf2f" path="res://Scenes & Scripts/Characters/player.tscn" id="2_yahll"]
 [ext_resource type="PackedScene" uid="uid://cigk5wr4e4tsb" path="res://Scenes & Scripts/Characters/killzone.tscn" id="4_576p1"]
+[ext_resource type="PackedScene" uid="uid://c1k44u1c0dinu" path="res://Scenes & Scripts/Characters/snake.tscn" id="5_7xudw"]
 [ext_resource type="PackedScene" uid="uid://b50i28q4ktvwj" path="res://Scenes & Scripts/Characters/golden_leaf.tscn" id="6_4ago1"]
+[ext_resource type="PackedScene" uid="uid://batssswxc7724" path="res://Scenes & Scripts/Characters/lava_blob.tscn" id="6_fqbi2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jlc67"]
 texture = ExtResource("1_s6k22")
@@ -41,7 +42,6 @@ sources/0 = SubResource("TileSetAtlasSource_jlc67")
 distance = -87.0
 
 [node name="level_1" type="Node2D"]
-script = ExtResource("1_fqbi2")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_7xudw")
@@ -58,3 +58,9 @@ shape = SubResource("WorldBoundaryShape2D_xvudc")
 
 [node name="Golden Leaf" parent="." instance=ExtResource("6_4ago1")]
 position = Vector2(507, -42)
+
+[node name="Snake" parent="." instance=ExtResource("5_7xudw")]
+position = Vector2(315, -57)
+
+[node name="lava_blob" parent="." instance=ExtResource("6_fqbi2")]
+position = Vector2(457, -40)
