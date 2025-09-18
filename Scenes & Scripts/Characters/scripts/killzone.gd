@@ -3,6 +3,7 @@ extends Area2D
 @onready var timer: Timer = $Timer
 
 var knockback_direction = 1
+@export var damage = 1
 
 func _on_body_entered(body: Node2D) -> void:
 	if timer.is_stopped() and body.is_in_group("Player"):
@@ -10,7 +11,7 @@ func _on_body_entered(body: Node2D) -> void:
 		
 		# Deduct health
 		if PlayerGlobals.health > 1:
-			PlayerGlobals.health -= 1
+			PlayerGlobals.health -= damage
 		else:
 			print("You died")
 			PlayerGlobals.health = PlayerGlobals.MAX_HEALTH

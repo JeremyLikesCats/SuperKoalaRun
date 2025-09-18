@@ -4,7 +4,7 @@ const MASS = 10
 const GRAVITY = 80
 const FRICTION = 100 * MASS
 const WEIGHT = MASS * GRAVITY
-const MAX_SPEED = 8000
+const MAX_SPEED = 7000
 const MAX_JUMP_HEIGHT = 25
 const MOVE_THRUST = 1500 * MASS
 const JUMP_SPEED = 13 * MASS
@@ -27,9 +27,17 @@ var knockback_y = 0
 func _process(delta: float) -> void:
 	move(delta)
 	knockback_detection(delta)
-	apply_physics(delta)
+	
 	jump_calculations(delta)
+	apply_physics(delta)
 	move_and_slide()
+	
+	check_died()
+
+func check_died() -> void:
+	if PlayerGlobals.health < 0:
+		get_tree().reload_current_scene()
+		PlayerGlobals.health = 5
 
 func jump_calculations(delta: float) -> void:
 	jump_height += -velocity.y * delta

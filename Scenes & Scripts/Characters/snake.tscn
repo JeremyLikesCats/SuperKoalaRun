@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1k44u1c0dinu"]
+[gd_scene load_steps=11 format=3 uid="uid://c1k44u1c0dinu"]
 
 [ext_resource type="Texture2D" uid="uid://jdpc751jds2k" path="res://Assets/Sprite-0003-Sheet.png" id="1_1gjdf"]
 [ext_resource type="Script" uid="uid://d2v6inm4kgb3a" path="res://Scenes & Scripts/Characters/scripts/snake.gd" id="1_c3qfb"]
@@ -43,6 +43,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2os5"]
 radius = 8.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c3qfb"]
+size = Vector2(10, 1)
+
 [node name="Snake" type="Node2D"]
 script = ExtResource("1_c3qfb")
 
@@ -64,5 +67,24 @@ target_position = Vector2(9, 0)
 target_position = Vector2(-9, 0)
 collision_mask = 3
 
-[node name="RayCastWeakSpot" type="RayCast2D" parent="."]
-target_position = Vector2(0, -13)
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_c3qfb")
+one_way_collision = true
+
+[node name="RayCastWeakSpots" type="Node2D" parent="."]
+position = Vector2(0, -1)
+
+[node name="RayCastWeakSpot" type="RayCast2D" parent="RayCastWeakSpots"]
+position = Vector2(0, -8)
+target_position = Vector2(0, -3)
+
+[node name="RayCastWeakSpot3" type="RayCast2D" parent="RayCastWeakSpots"]
+position = Vector2(5, -8)
+target_position = Vector2(0, -3)
+
+[node name="RayCastWeakSpot2" type="RayCast2D" parent="RayCastWeakSpots"]
+position = Vector2(-5, -8)
+target_position = Vector2(0, -3)
