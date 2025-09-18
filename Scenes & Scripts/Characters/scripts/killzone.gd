@@ -12,6 +12,7 @@ func _on_body_entered(body: Node2D) -> void:
 		# Deduct health
 		if PlayerGlobals.health > 1:
 			PlayerGlobals.health -= damage
+			Stats.health_change()
 		else:
 			print("You died")
 			PlayerGlobals.health = PlayerGlobals.MAX_HEALTH
