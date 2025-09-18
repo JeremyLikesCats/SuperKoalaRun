@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8qirrg0fdf2f"]
+[gd_scene load_steps=8 format=3 uid="uid://b8qirrg0fdf2f"]
 
 [ext_resource type="Script" uid="uid://bxmd12kt3e84p" path="res://Scenes & Scripts/Characters/scripts/player.gd" id="1_eiqjv"]
 [ext_resource type="Texture2D" uid="uid://ct2lr27n1mj8p" path="res://Assets/Koala_Idle-Sheet.png" id="2_eiqjv"]
-[ext_resource type="Script" uid="uid://cma2ddl1yrrfl" path="res://Scenes & Scripts/Characters/stats_label.gd" id="3_r00r3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eiqjv"]
 size = Vector2(15, 15.5)
@@ -57,13 +56,3 @@ frame_progress = 0.39952
 [node name="KnockbackTimer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
-
-[node name="Stats" type="Node" parent="."]
-
-[node name="Stats Label" type="Label" parent="Stats"]
-offset_left = -115.0
-offset_top = -65.0
-offset_right = -62.0
-offset_bottom = -42.0
-text = "Health"
-script = ExtResource("3_r00r3")

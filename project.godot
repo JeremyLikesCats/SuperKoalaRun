@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 PlayerGlobals="*res://Scenes & Scripts/Globals/player_globals.gd"
-Stats="*res://Scenes & Scripts/Globals/stats.gd"
 
 [global_group]
 
