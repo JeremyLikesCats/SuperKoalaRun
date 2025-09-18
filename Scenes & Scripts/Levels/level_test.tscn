@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://b8qirrg0fdf2f" path="res://Scenes & Scripts/Characters/player.tscn" id="1_xawdm"]
 [ext_resource type="Texture2D" uid="uid://qq5p71nc4ae7" path="res://icon.svg" id="2_ojicq"]
-[ext_resource type="PackedScene" uid="uid://qcyhk10bnew2" path="res://Scenes & Scripts/Characters/snake.tscn" id="3_7n8sj"]
-[ext_resource type="PackedScene" uid="uid://ekfj0nlshs14" path="res://Scenes & Scripts/Characters/golden_leaf.tscn" id="4_2wruk"]
+[ext_resource type="PackedScene" uid="uid://c1k44u1c0dinu" path="res://Scenes & Scripts/Characters/snake.tscn" id="3_7n8sj"]
+[ext_resource type="PackedScene" uid="uid://b50i28q4ktvwj" path="res://Scenes & Scripts/Characters/golden_leaf.tscn" id="4_2wruk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qkmes"]
 size = Vector2(716, 6)
