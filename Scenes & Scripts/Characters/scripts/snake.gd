@@ -32,12 +32,9 @@ func _process(delta: float) -> void:
 	for ray_cast_weak_spot in ray_cast_weak_spots:
 		if ray_cast_weak_spot.is_colliding():
 			var collider = ray_cast_weak_spot.get_collider()
-			print("hsswejfi")
-			if collider != null and collider.is_in_group("Player") and collider.jumping == false:
-				print("hsswejfi")
+			if collider != null and collider.is_in_group("Player") and collider.velocity.y >= 0:
 				collider.knockback(collider.velocity.x, -150)
 				die()
-			$Killzone.knockback_direction = 1
 		
 	position.x += SPEED * direction * delta
 	
