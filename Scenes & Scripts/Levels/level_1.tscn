@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cigk5wr4e4tsb" path="res://Scenes & Scripts/Characters/killzone.tscn" id="4_576p1"]
 [ext_resource type="PackedScene" uid="uid://c1k44u1c0dinu" path="res://Scenes & Scripts/Characters/snake.tscn" id="5_7xudw"]
 [ext_resource type="PackedScene" uid="uid://b50i28q4ktvwj" path="res://Scenes & Scripts/Characters/golden_leaf.tscn" id="6_4ago1"]
-[ext_resource type="PackedScene" path="res://Scenes & Scripts/Characters/lava_blob.tscn" id="6_fqbi2"]
+[ext_resource type="PackedScene" uid="uid://batssswxc7724" path="res://Scenes & Scripts/Characters/lava_blob.tscn" id="6_fqbi2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jlc67"]
 texture = ExtResource("1_s6k22")
