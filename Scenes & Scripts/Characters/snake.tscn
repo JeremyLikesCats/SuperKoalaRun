@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://c1k44u1c0dinu"]
 
 [ext_resource type="Texture2D" uid="uid://jdpc751jds2k" path="res://Assets/Sprite-0003-Sheet.png" id="1_1gjdf"]
-[ext_resource type="Script" uid="uid://d2v6inm4kgb3a" path="res://Scenes & Scripts/Characters/snake.gd" id="1_c3qfb"]
+[ext_resource type="Script" uid="uid://d2v6inm4kgb3a" path="res://Scenes & Scripts/Characters/scripts/snake.gd" id="1_c3qfb"]
 [ext_resource type="PackedScene" uid="uid://cigk5wr4e4tsb" path="res://Scenes & Scripts/Characters/killzone.tscn" id="3_u1dax"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rb4c0"]

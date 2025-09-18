@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjyhyctbetv5q"]
+
+[ext_resource type="Script" uid="uid://b6ehklqcf55uv" path="res://Scenes & Scripts/Characters/scripts/absolute_death.gd" id="1_tcahs"]
+
+[node name="absolute_death" type="Area2D"]
+script = ExtResource("1_tcahs")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
