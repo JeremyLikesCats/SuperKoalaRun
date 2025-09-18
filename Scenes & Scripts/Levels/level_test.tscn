@@ -14,6 +14,7 @@ size = Vector2(98, 20)
 [node name="level_test" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_xawdm")]
+unique_name_in_owner = true
 position = Vector2(100, 522)
 
 [node name="snake2" parent="." instance=ExtResource("3_7n8sj")]

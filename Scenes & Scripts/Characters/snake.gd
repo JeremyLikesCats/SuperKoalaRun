@@ -11,9 +11,17 @@ var direction = 1
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if ray_cast_right.is_colliding():
-		direction = -1
-		animated_sprite_2d.flip_h = true
+		var collider = ray_cast_right.get_collider()
+		if collider != null and not collider.is_in_group("Player"):
+			direction = -1
+			animated_sprite_2d.flip_h = true
+		$Killzone.knockback_direction = 1
+		
 	if ray_cast_left.is_colliding():
-		direction = 1
-		animated_sprite_2d.flip_h = false
+		var collider = ray_cast_left.get_collider()
+		if collider != null and not collider.is_in_group("Player"):
+			direction = 1
+			animated_sprite_2d.flip_h = false
+		$Killzone.knockback_direction = -1
+		
 	position.x += SPEED * direction * delta

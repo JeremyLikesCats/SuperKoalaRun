@@ -14,15 +14,20 @@ const JUMP_ACCELERATION_FACTOR = 0.05 # How much your move thrust is affected wh
 var jumping = false
 var jump_height = 0
 
+var knockedback = false
+var knockback_x = 0
+var knockback_y = 0
+
+
 func _process(delta: float) -> void:
 	move(delta)
+	knockback_detection(delta)
 	apply_physics(delta)
 	jump_calculations(delta)
 	move_and_slide()
 
 func jump_calculations(delta: float) -> void:
 	jump_height += -velocity.y * delta
-	print(jump_height)
 	if jump_height > MAX_JUMP_HEIGHT or is_on_floor() and velocity.y == 0:
 		jumping = false
 		jump_height = 0
@@ -42,12 +47,14 @@ func move(delta: float) -> void:
 			rotation += 0.08 * Input.get_axis("Left", "Right")
 			velocity.x = move_toward(velocity.x, Input.get_axis("Left", "Right") * MAX_SPEED * delta, MOVE_THRUST * delta * JUMP_ACCELERATION_FACTOR)
 		if Input.is_action_pressed("Jump") and jumping:
-			print("hi")
 			velocity.y = -HOLD_JUMP_SPEED
 		if not Input.is_action_pressed("Jump"):
 			jumping = false
 		
-	
+func knockback_detection(delta: float) -> void:
+	if not $KnockbackTimer.is_stopped():
+		velocity.x = knockback_x
+		velocity.y = knockback_y
 	
 func apply_physics(delta: float) -> void:
 	if is_on_floor():
@@ -58,7 +65,9 @@ func apply_physics(delta: float) -> void:
 	else:
 		# weight
 		velocity.y += WEIGHT * delta
-	
-	
-	pass
+
+func knockback(magnitude_x: float, magnitude_y: float) -> void:
+	knockback_x = magnitude_x
+	knockback_y = magnitude_y
+	$KnockbackTimer.start()
 	
