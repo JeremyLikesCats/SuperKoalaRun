@@ -20,21 +20,27 @@ var knockedback = false
 var knockback_x = 0
 var knockback_y = 0
 
-
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var knockback_timer: Timer = $KnockbackTimer
+@onready var feet = $Feet.get_children()
 
 func _process(delta: float) -> void:
-	
 	move(delta)
 	knockback_detection(delta)
-	
 	jump_calculations(delta)
 	apply_physics(delta)
 	move_and_slide()
-
 	check_died()
+	check_squash()
 
+func check_squash() -> void:
+	for foot in feet:
+		if foot.is_colliding():
+			var collider = foot.get_collider()
+			if collider != null and collider.is_in_group("Enemy") and velocity.y >= 0:
+				knockback(0, -150)
+				collider.die()
+	
 func check_died() -> void:
 	if PlayerGlobals.health < 0:
 		get_tree().reload_current_scene()

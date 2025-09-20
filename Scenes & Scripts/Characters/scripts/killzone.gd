@@ -4,22 +4,13 @@ extends Area2D
 
 var knockback_direction = 1
 @export var damage = 1
+@export var knockback = true
 
 func _on_body_entered(body: Node2D) -> void:
 	if timer.is_stopped() and body.is_in_group("Player"):
-		# When attacked
-		
-		# Deduct health
-		if PlayerGlobals.health > 1:
-			PlayerGlobals.health -= damage
-		else:
-			print("You died")
-			PlayerGlobals.health = PlayerGlobals.MAX_HEALTH
-			get_tree().reload_current_scene()
-		print(knockback_direction)
+		PlayerGlobals.health -= damage
 		# Knockback
-		body.knockback(150 * knockback_direction, -100)
-		
+		if knockback:
+			body.knockback(150 * knockback_direction, -100)
 		# Start invincibility timer
 		timer.start()
-		

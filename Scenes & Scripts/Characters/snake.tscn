@@ -41,12 +41,14 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u1dax"]
-size = Vector2(16, 13)
+size = Vector2(14, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c3qfb"]
-size = Vector2(16, 1)
+size = Vector2(14, 14)
 
-[node name="Snake" type="Node2D"]
+[node name="Snake" type="Area2D" groups=["Enemy"]]
+collision_layer = 9
+collision_mask = 9
 script = ExtResource("1_c3qfb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -58,35 +60,16 @@ frame_progress = 0.689996
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(0, 1.5)
+position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_u1dax")
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
-target_position = Vector2(9, 0)
+target_position = Vector2(6, 0)
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
-target_position = Vector2(-9, 0)
+target_position = Vector2(-8, 0)
 collision_mask = 3
 
-[node name="Boundaries" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries"]
-position = Vector2(0, -5.5)
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_c3qfb")
-one_way_collision = true
-
-[node name="RayCastWeakSpots" type="Node2D" parent="."]
-position = Vector2(0, -1)
-
-[node name="RayCastWeakSpot" type="RayCast2D" parent="RayCastWeakSpots"]
-position = Vector2(0, -5)
-target_position = Vector2(0, -1)
-
-[node name="RayCastWeakSpot3" type="RayCast2D" parent="RayCastWeakSpots"]
-position = Vector2(8, -5)
-scale = Vector2(1.00126, 1)
-target_position = Vector2(0, -1)
-
-[node name="RayCastWeakSpot2" type="RayCast2D" parent="RayCastWeakSpots"]
-position = Vector2(-8, -5)
-target_position = Vector2(0, -1)

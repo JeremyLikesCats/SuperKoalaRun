@@ -6,12 +6,11 @@ var direction = 1
 
 @onready var ray_cast_right: RayCast2D = $RayCastRight
 @onready var ray_cast_left: RayCast2D = $RayCastLeft
-@onready var ray_cast_weak_spots = $RayCastWeakSpots.get_children()
 
 @onready var timer: Timer = $Killzone/Timer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-const MIN_FALLING_VEL = -10
+const MIN_FALLING_VEL = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -29,13 +28,6 @@ func _process(delta: float) -> void:
 			animated_sprite_2d.flip_h = false
 		$Killzone.knockback_direction = -1
 	
-	for ray_cast_weak_spot in ray_cast_weak_spots:
-		if ray_cast_weak_spot.is_colliding():
-			var collider = ray_cast_weak_spot.get_collider()
-			if collider != null and collider.is_in_group("Player") and collider.velocity.y >= 0:
-				collider.knockback(collider.velocity.x, -150)
-				die()
-		
 	position.x += SPEED * direction * delta
 	
 func die():
