@@ -13,6 +13,8 @@ const JUMP_ACCELERATION_FACTOR = 0.05 # How much your move thrust is affected wh
 
 const KNOCKBACK_GRAVITY = WEIGHT * 0.05
 
+const MAX_HEALTH = 5
+
 var jumping = false
 var jump_height = 0
 
@@ -20,8 +22,11 @@ var knockedback = false
 var knockback_x = 0
 var knockback_y = 0
 
+var health = 5
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var knockback_timer: Timer = $KnockbackTimer
+@onready var invincibility_timer: Timer = $InvincibilityTimer
 @onready var feet = $Feet.get_children()
 
 func _process(delta: float) -> void:
@@ -30,22 +35,17 @@ func _process(delta: float) -> void:
 	jump_calculations(delta)
 	apply_physics(delta)
 	move_and_slide()
-	check_died()
 	check_squash()
 
 func check_squash() -> void:
-	for foot in feet:
-		if foot.is_colliding():
-			var collider = foot.get_collider()
-			if collider != null and collider.is_in_group("Enemy") and velocity.y >= 0:
-				knockback(0, -150)
-				collider.die()
+	if invincibility_timer.is_stopped():
+		for foot in feet:
+			if foot.is_colliding():
+				var collider = foot.get_collider()
+				if collider != null and collider.is_in_group("Enemy") and velocity.y >= 0:
+					knockback(velocity.x * 0.5, -150)
+					collider.die()
 	
-func check_died() -> void:
-	if PlayerGlobals.health < 0:
-		get_tree().reload_current_scene()
-		PlayerGlobals.health = 5
-
 func jump_calculations(delta: float) -> void:
 	jump_height += -velocity.y * delta
 	if jump_height > MAX_JUMP_HEIGHT or is_on_floor() and velocity.y == 0:
@@ -100,3 +100,11 @@ func knockback(magnitude_x = null, magnitude_y = null) -> void:
 		knockback_y = velocity.y
 	$KnockbackTimer.start()
 	
+func damage(hitpoints: int):
+	health -= hitpoints
+	if health <= 0:
+		die()
+		
+func die():
+	get_tree().reload_current_scene()
+	health = MAX_HEALTH
