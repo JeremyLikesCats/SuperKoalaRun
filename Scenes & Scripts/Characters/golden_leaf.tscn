@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b50i28q4ktvwj"]
 
 [ext_resource type="Script" uid="uid://d33dq8lffvkem" path="res://Scenes & Scripts/Characters/scripts/golden_leaf.gd" id="1_qhyx7"]
-[ext_resource type="Texture2D" uid="uid://bfe228fhcpmxb" path="res://Assets/Sprite-0004.png" id="2_la4u4"]
+[ext_resource type="Texture2D" uid="uid://dqe566t1dpsf" path="res://Assets/Leaf.png" id="2_qhyx7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f43xc"]
 size = Vector2(15, 15)
@@ -14,6 +14,6 @@ script = ExtResource("1_qhyx7")
 shape = SubResource("RectangleShape2D_f43xc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_la4u4")
+texture = ExtResource("2_qhyx7")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

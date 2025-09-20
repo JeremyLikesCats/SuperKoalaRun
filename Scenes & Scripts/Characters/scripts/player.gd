@@ -22,12 +22,23 @@ var knockedback = false
 var knockback_x = 0
 var knockback_y = 0
 
-var health = 5
+@onready var health = 5
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var knockback_timer: Timer = $KnockbackTimer
 @onready var invincibility_timer: Timer = $InvincibilityTimer
 @onready var feet = $Feet.get_children()
+@onready var health_bar: HBoxContainer = $GUI/HealthBar
+
+func _ready() -> void:
+	load_hud()
+
+func load_hud() -> void:
+	for hitpoint in range(health):
+		var heart = TextureRect.new()
+		heart.texture = load("res://Assets/Heart.png")
+		heart.expand_mode = TextureRect.EXPAND_FIT_WIDTH
+		health_bar.add_child(heart)
 
 func _process(delta: float) -> void:
 	move(delta)
@@ -98,13 +109,18 @@ func knockback(magnitude_x = null, magnitude_y = null) -> void:
 		knockback_x = velocity.x
 	if knockback_y == null:
 		knockback_y = velocity.y
-	$KnockbackTimer.start()
+	knockback_timer.start()
 	
 func damage(hitpoints: int):
 	health -= hitpoints
+	invincibility_timer.start()
 	if health <= 0:
 		die()
-		
+	# UPDATE HUD
+	for heart in health_bar.get_children().slice((health), MAX_HEALTH):
+		print(heart)
+		heart.texture = load("res://Assets/empty_heart.png")
+	
 func die():
 	get_tree().reload_current_scene()
 	health = MAX_HEALTH

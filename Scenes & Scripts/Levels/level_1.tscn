@@ -1,13 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://wnhyue7ka2ja"]
+[gd_scene load_steps=10 format=3 uid="uid://wnhyue7ka2ja"]
 
 [ext_resource type="Texture2D" uid="uid://80dn2pexkiwe" path="res://Assets/GrasslandTileMap.png" id="1_s6k22"]
 [ext_resource type="PackedScene" uid="uid://b8qirrg0fdf2f" path="res://Scenes & Scripts/Characters/player.tscn" id="2_yahll"]
 [ext_resource type="PackedScene" uid="uid://cigk5wr4e4tsb" path="res://Scenes & Scripts/Characters/killzone.tscn" id="4_576p1"]
 [ext_resource type="PackedScene" uid="uid://c1k44u1c0dinu" path="res://Scenes & Scripts/Characters/snake.tscn" id="5_7xudw"]
 [ext_resource type="PackedScene" uid="uid://b50i28q4ktvwj" path="res://Scenes & Scripts/Characters/golden_leaf.tscn" id="6_4ago1"]
-[ext_resource type="PackedScene" uid="uid://batssswxc7724" path="res://Scenes & Scripts/Characters/lava_blob.tscn" id="6_fqbi2"]
-[ext_resource type="Script" uid="uid://sg5cge71dgy6" path="res://Scenes & Scripts/Characters/scripts/health.gd" id="7_576p1"]
-[ext_resource type="Texture2D" uid="uid://c42m6jilds3nu" path="res://Assets/Heart.png" id="8_bm7ya"]
+[ext_resource type="PackedScene" path="res://Scenes & Scripts/Characters/lava_blob.tscn" id="6_fqbi2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jlc67"]
 texture = ExtResource("1_s6k22")
@@ -86,9 +84,6 @@ sources/0 = SubResource("TileSetAtlasSource_jlc67")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xvudc"]
 distance = -87.0
 
-[sub_resource type="Theme" id="Theme_576p1"]
-default_font_size = 100
-
 [node name="level_1" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -100,29 +95,14 @@ layer_0/tile_data = PackedInt32Array(65531, 0, 1, 65532, 65536, 1, 65533, 65536,
 position = Vector2(-11, -23)
 
 [node name="Killzone" parent="." instance=ExtResource("4_576p1")]
-damage = 1000
+knockback = false
+instakill = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 shape = SubResource("WorldBoundaryShape2D_xvudc")
 
 [node name="lava_blob" parent="." instance=ExtResource("6_fqbi2")]
 position = Vector2(484, -24)
-
-[node name="GUI" type="CanvasLayer" parent="."]
-
-[node name="Health" type="Label" parent="GUI"]
-offset_left = 111.0
-offset_top = -17.0
-offset_right = 421.0
-offset_bottom = 120.0
-theme = SubResource("Theme_576p1")
-text = "health"
-script = ExtResource("7_576p1")
-
-[node name="Heart" type="Sprite2D" parent="GUI"]
-position = Vector2(54.5, 51.5)
-scale = Vector2(5.9375, 5.3125)
-texture = ExtResource("8_bm7ya")
 
 [node name="Golden Leafs" type="Node" parent="."]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c1k44u1c0dinu"]
+[gd_scene load_steps=9 format=3 uid="uid://c1k44u1c0dinu"]
 
 [ext_resource type="Texture2D" uid="uid://jdpc751jds2k" path="res://Assets/Sprite-0003-Sheet.png" id="1_1gjdf"]
 [ext_resource type="Script" uid="uid://d2v6inm4kgb3a" path="res://Scenes & Scripts/Characters/scripts/snake.gd" id="1_c3qfb"]
@@ -12,14 +12,6 @@ region = Rect2(0, 0, 16, 16)
 atlas = ExtResource("1_1gjdf")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6jwm7"]
-atlas = ExtResource("1_1gjdf")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pseeq"]
-atlas = ExtResource("1_1gjdf")
-region = Rect2(48, 0, 16, 16)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_tir4d"]
 animations = [{
 "frames": [{
@@ -28,16 +20,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sc25s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6jwm7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pseeq")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 2.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u1dax"]
@@ -50,6 +36,7 @@ size = Vector2(14, 14)
 collision_layer = 9
 collision_mask = 9
 script = ExtResource("1_c3qfb")
+SPEED = 30
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tir4d")
