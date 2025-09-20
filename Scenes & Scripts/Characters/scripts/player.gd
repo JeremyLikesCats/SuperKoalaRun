@@ -64,7 +64,8 @@ func move(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, Input.get_axis("Left", "Right") * MAX_SPEED * delta, MOVE_THRUST * delta * JUMP_ACCELERATION_FACTOR)
 		if Input.is_action_pressed("Jump") and jumping:
 			velocity.y = -HOLD_JUMP_SPEED
-
+		if not Input.is_action_pressed("Jump"):
+			jumping = false
 		
 func knockback_detection(delta: float) -> void:
 	if not knockback_timer.is_stopped():
